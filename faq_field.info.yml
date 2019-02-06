@@ -1,0 +1,5 @@
+name: 'FAQ Field'
+type: module
+description: 'Provide a custom field « FAQ question �» composed of a question and an answer'
+core: 8.x
+package: 'Field'

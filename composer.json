@@ -1,0 +1,14 @@
+{
+  "name": "kgaut/faq_field",
+  "type": "drupal-module",
+  "description": "Provide a custom field « FAQ question » composed of a question and an answer",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://github.com/kgaut/drupal-faq-field",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://github.com/kgaut/drupal-faq-field/issues",
+    "source": "https://github.com/kgaut/drupal-faq-field"
+  },
+  "require": { }
+}
