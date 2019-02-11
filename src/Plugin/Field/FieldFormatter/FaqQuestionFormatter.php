@@ -6,6 +6,8 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
+use Drupal\Core\Field\FormatterInterface;
+use Drupal\Core\Field\PluginSettingsBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -25,9 +27,20 @@ class FaqQuestionFormatter extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
+
+    $items = $items->getValue();
+
+    foreach ($items as &$item) {
+      $item['answer'] = [
+        '#type' => 'processed_text',
+        '#text' => $item['answer'],
+        '#format' => $item['answer_format'],
+      ];
+    }
+
     $build = [
       '#theme' => 'faq_questions',
-      '#items' => $items->getValue(),
+      '#items' => $items,
     ];
     return $build;
   }
