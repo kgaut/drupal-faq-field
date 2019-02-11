@@ -28,14 +28,12 @@ class FaqQuestion extends FieldItemBase {
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties['question'] = DataDefinition::create('string')
-      ->setLabel(new TranslatableMarkup('Question'))
-      ->setRequired(TRUE);
+      ->setLabel(new TranslatableMarkup('Question'));
 
     $properties['answer'] = DataDefinition::create('string')
-      ->setLabel(t('Answer'))
-      ->setRequired(TRUE);
+      ->setLabel(t('Answer'));
 
-    $properties['format'] = DataDefinition::create('filter_format')
+    $properties['answer_format'] = DataDefinition::create('filter_format')
       ->setLabel(t('Text format'));
 
     return $properties;
@@ -50,18 +48,18 @@ class FaqQuestion extends FieldItemBase {
         'question' => [
           'type' => 'varchar_ascii',
           'length' => 255,
+          'not null' => FALSE,
         ],
         'answer' => [
           'type' => 'text',
           'size' => 'big',
+          'not null' => FALSE,
         ],
         'answer_format' => [
           'type' => 'varchar_ascii',
           'length' => 255,
+          'not null' => FALSE,
         ],
-      ],
-      'indexes' => [
-        'format' => ['format'],
       ],
     ];
 

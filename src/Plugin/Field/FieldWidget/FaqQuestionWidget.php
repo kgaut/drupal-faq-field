@@ -22,60 +22,24 @@ class FaqQuestionWidget extends WidgetBase {
   /**
    * {@inheritdoc}
    */
-  public static function defaultSettings() {
-    return [
-      'size' => 60,
-      'placeholder' => '',
-    ] + parent::defaultSettings();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function settingsForm(array $form, FormStateInterface $form_state) {
-    $elements = [];
-
-    $elements['size'] = [
-      '#type' => 'number',
-      '#title' => t('Size of textfield'),
-      '#default_value' => $this->getSetting('size'),
-      '#required' => TRUE,
-      '#min' => 1,
-    ];
-    $elements['placeholder'] = [
-      '#type' => 'textfield',
-      '#title' => t('Placeholder'),
-      '#default_value' => $this->getSetting('placeholder'),
-      '#description' => t('Text that will be shown inside the field until a value is entered. This hint is usually a sample value or a brief description of the expected format.'),
-    ];
-
-    return $elements;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function settingsSummary() {
-    $summary = [];
-
-    $summary[] = t('Textfield size: @size', ['@size' => $this->getSetting('size')]);
-    if (!empty($this->getSetting('placeholder'))) {
-      $summary[] = t('Placeholder: @placeholder', ['@placeholder' => $this->getSetting('placeholder')]);
-    }
-
-    return $summary;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    $element['value'] = $element + [
+    $element['question'] = [
       '#type' => 'textfield',
-      '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : NULL,
-      '#size' => $this->getSetting('size'),
-      '#placeholder' => $this->getSetting('placeholder'),
-      '#maxlength' => $this->getFieldSetting('max_length'),
+      '#title' => t('Question'),
+      '#default_value' => isset($items[$delta]->question) ? $items[$delta]->question : NULL,
+      '#size' => 120,
+      '#maxlength' => 255,
+    ];
+
+    $element['answer'] = [
+      '#type' => 'text_format',
+      '#format' => isset($items[$delta]->answer_format) ? $items[$delta]->answer_format : 'full_html',
+      '#default_value' => isset($items[$delta]->answer) ? $items[$delta]->answer : '',
+      '#title' => t('Answer'),
+      '#rows' => 5,
+      '#attached' => [
+        'library' => ['text/drupal.text'],
+      ],
     ];
 
     return $element;
