@@ -9,6 +9,7 @@ function faq_field_theme($existing, $type, $theme, $path) {
     'template' => 'faq-questions',
     'variables' => [
       'items' => [],
+      'field_name' => NULL,
     ],
   ];
   return $themes;
