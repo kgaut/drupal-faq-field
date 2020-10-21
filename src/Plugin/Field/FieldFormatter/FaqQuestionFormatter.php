@@ -38,12 +38,11 @@ class FaqQuestionFormatter extends FormatterBase {
       ];
     }
 
-    $build = [
+    return [
       '#theme' => 'faq_questions',
       '#items' => $items,
       '#field_name' => $this->fieldDefinition->get('field_name'),
     ];
-    return $build;
   }
 
 }

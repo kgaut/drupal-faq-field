@@ -2,6 +2,7 @@
     <ol>
     {% for item in items %}
         <li>
+            {% if item.section %}<h2>{{ item.section }}</h2>{% endif %}
             <h3>{{ item.question }}</h3>
             <section>
                 {{ item.answer }}

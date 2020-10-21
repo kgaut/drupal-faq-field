@@ -23,6 +23,14 @@ class FaqQuestionWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+    $element['section'] = [
+      '#type' => 'textfield',
+      '#title' => t('Section'),
+      '#default_value' => isset($items[$delta]->section) ? $items[$delta]->section : NULL,
+      '#size' => 120,
+      '#maxlength' => 255,
+    ];
+
     $element['question'] = [
       '#type' => 'textfield',
       '#title' => t('Question'),

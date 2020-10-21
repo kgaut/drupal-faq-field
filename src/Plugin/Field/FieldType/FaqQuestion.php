@@ -27,6 +27,9 @@ class FaqQuestion extends FieldItemBase {
    * {@inheritdoc}
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
+    $properties['section'] = DataDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('Section'));
+
     $properties['question'] = DataDefinition::create('string')
       ->setLabel(new TranslatableMarkup('Question'));
 
@@ -45,6 +48,11 @@ class FaqQuestion extends FieldItemBase {
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
     $schema = [
       'columns' => [
+        'section' => [
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ],
         'question' => [
           'type' => 'varchar',
           'length' => 255,
