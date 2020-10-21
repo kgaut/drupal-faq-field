@@ -46,7 +46,7 @@ class FaqQuestion extends FieldItemBase {
     $schema = [
       'columns' => [
         'question' => [
-          'type' => 'varchar_ascii',
+          'type' => 'varchar',
           'length' => 255,
           'not null' => FALSE,
         ],
@@ -56,7 +56,7 @@ class FaqQuestion extends FieldItemBase {
           'not null' => FALSE,
         ],
         'answer_format' => [
-          'type' => 'varchar_ascii',
+          'type' => 'varchar',
           'length' => 255,
           'not null' => FALSE,
         ],
