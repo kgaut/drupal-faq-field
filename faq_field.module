@@ -10,6 +10,8 @@ function faq_field_theme($existing, $type, $theme, $path) {
     'variables' => [
       'items' => [],
       'field_name' => NULL,
+      'wrapper_bundle' => NULL,
+      'wrapper_type' => NULL,
     ],
   ];
   return $themes;

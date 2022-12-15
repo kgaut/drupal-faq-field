@@ -27,7 +27,12 @@ class FaqQuestionFormatter extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-
+    $bundle = NULL;
+    $entityType = NULL;
+    if($items->getParent() && $items->getParent()->getEntity()) {
+      $entityType = $items->getParent()->getEntity()->getEntityType()->id();
+      $bundle = $items->getParent()->getEntity()->bundle();
+    }
     $items = $items->getValue();
 
     foreach ($items as &$item) {
@@ -42,6 +47,8 @@ class FaqQuestionFormatter extends FormatterBase {
       '#theme' => 'faq_questions',
       '#items' => $items,
       '#field_name' => $this->fieldDefinition->get('field_name'),
+      '#wrapper_bundle' => $bundle,
+      '#wrapper_type' => $entityType,
     ];
   }
 
